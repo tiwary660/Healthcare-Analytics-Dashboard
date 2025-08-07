@@ -151,28 +151,79 @@ with col2:
     st.write("• Automated risk stratification (Low/Medium/High)")
     st.write("• Real-time model performance monitoring")
 
+# Usage Guide Section
+st.markdown("---")
+st.header("🚀 How to Get Started")
+
+usage_tabs = st.tabs(["Quick Start", "Data Requirements", "Best Practices"])
+
+with usage_tabs[0]:
+    st.markdown("""
+    <div class="feature-card">
+    <h4>5-Minute Quick Start Guide:</h4>
+    <ol>
+    <li><strong>Upload Data:</strong> Go to 'Data Upload' page and upload your patient CSV/Excel file</li>
+    <li><strong>View Analytics:</strong> Check the 'Dashboard' for instant insights and visualizations</li>
+    <li><strong>Risk Assessment:</strong> Use 'Risk Assessment' to predict patient readmission risks</li>
+    <li><strong>Generate Reports:</strong> Create professional reports in the 'Reports' section</li>
+    <li><strong>Advanced Analysis:</strong> Explore 3D visualizations in 'Advanced Analytics'</li>
+    </ol>
+    <p><em>💡 Tip: Start with sample data if you don't have your own dataset yet!</em></p>
+    </div>
+    """, unsafe_allow_html=True)
+
+with usage_tabs[1]:
+    st.markdown("""
+    <div class="feature-card">
+    <h4>Required Data Columns:</h4>
+    <ul>
+    <li><strong>Patient Info:</strong> Age, Gender, Insurance_Type</li>
+    <li><strong>Medical:</strong> Primary_Diagnosis, Medical_Conditions, Severity_Score</li>
+    <li><strong>Administrative:</strong> Admission_Source, Admission_Type, Length_of_Stay</li>
+    <li><strong>Outcomes:</strong> Readmission_Risk, Patient_Satisfaction</li>
+    </ul>
+    <p><em>🔧 The system automatically handles missing data and performs quality checks</em></p>
+    </div>
+    """, unsafe_allow_html=True)
+
+with usage_tabs[2]:
+    st.markdown("""
+    <div class="feature-card">
+    <h4>Best Practices for Healthcare Analytics:</h4>
+    <ul>
+    <li><strong>Data Privacy:</strong> Ensure all patient data is properly anonymized</li>
+    <li><strong>Regular Updates:</strong> Upload fresh data weekly for accurate predictions</li>
+    <li><strong>Model Training:</strong> Retrain ML models monthly with new patient data</li>
+    <li><strong>Clinical Review:</strong> Always validate ML predictions with clinical expertise</li>
+    <li><strong>Trend Monitoring:</strong> Track key metrics over time for operational insights</li>
+    </ul>
+    </div>
+    """, unsafe_allow_html=True)
+
 st.markdown("---")
 
 # Quick Actions
 st.header("Quick Actions")
 
-col1, col2, col3, col4 = st.columns(4)
+col1, col2, col3 = st.columns(3)
 
 with col1:
     if st.button("📈 View Dashboard", use_container_width=True):
         st.switch_page("pages/01_Dashboard.py")
+    if st.button("📤 Upload Data", use_container_width=True):
+        st.switch_page("pages/03_Data_Upload.py")
 
 with col2:
     if st.button("🎯 Risk Assessment", use_container_width=True):
         st.switch_page("pages/02_Risk_Assessment.py")
+    if st.button("📋 Reports", use_container_width=True):
+        st.switch_page("pages/04_Reports.py")
 
 with col3:
-    if st.button("📤 Upload Data", use_container_width=True):
-        st.switch_page("pages/03_Data_Upload.py")
-
-with col4:
     if st.button("🔬 Advanced Analytics", use_container_width=True):
         st.switch_page("pages/05_Advanced_Analytics.py")
+    if st.button("📖 About & Guide", use_container_width=True):
+        st.switch_page("pages/06_About.py")
 
 # System Status with enhanced indicators
 st.markdown("---")

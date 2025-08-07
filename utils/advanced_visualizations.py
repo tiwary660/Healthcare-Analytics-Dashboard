@@ -35,7 +35,7 @@ class AdvancedHealthcareVisualizations:
             labels=['Short Stay (1-2)', 'Medium Stay (3-5)', 'Long Stay (6-10)', 'Extended Stay (10+)']
         )
         
-        flow_data = df_copy.groupby(['primary_condition', 'los_category']).size().reset_index(name='count')
+        flow_data = df_copy.groupby(['primary_condition', 'los_category'], observed=True).size().reset_index(name='count')
         
         conditions = flow_data['primary_condition'].unique()
         categories = flow_data['los_category'].unique()

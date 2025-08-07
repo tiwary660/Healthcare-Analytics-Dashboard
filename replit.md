@@ -13,7 +13,7 @@ Preferred communication style: Simple, everyday language.
 ### Frontend Architecture
 - **Framework**: Streamlit web application with multi-page structure and enhanced CSS styling
 - **Layout Strategy**: Wide layout configuration with expandable sidebar navigation and custom gradient themes
-- **Page Organization**: Modular page structure with five main sections (Dashboard, Risk Assessment, Data Upload, Reports, Advanced Analytics)
+- **Page Organization**: Modular page structure with six main sections (Dashboard, Risk Assessment, Data Upload, Reports, Advanced Analytics, About & Guide)
 - **State Management**: Streamlit session state for persistent data and model storage across pages
 - **UI Components**: Column-based layouts, tabs, metrics displays, interactive file uploaders, and animated status indicators
 - **Presentation Mode**: Interactive slide-based presentation system with navigation controls and auto-advance functionality
@@ -62,3 +62,25 @@ Preferred communication style: Simple, everyday language.
 
 ### Potential Database Integration
 The architecture is designed to accommodate database integration, though currently uses in-memory storage. The DataProcessor class structure suggests readiness for database connectivity upgrades.
+
+## Project Documentation
+
+### Comprehensive User Guide
+- **About Page**: Complete project overview, feature descriptions, and technical specifications
+- **Usage Instructions**: Step-by-step guides for each dashboard section
+- **Data Requirements**: Detailed documentation of required and optional data fields
+- **Best Practices**: Healthcare analytics guidelines and HIPAA compliance notes
+- **Quick Start Guide**: 5-minute setup instructions for new users
+
+### README.md Documentation
+- **Project Overview**: Comprehensive description of features and capabilities
+- **Installation Guide**: Setup instructions and prerequisites
+- **Technology Stack**: Detailed breakdown of all dependencies and tools
+- **Target Users**: Specific use cases for different healthcare roles
+- **Version History**: Feature tracking and update documentation
+
+### Enhanced User Experience
+- **Interactive Navigation**: Quick action buttons for all major pages
+- **Preview Features**: Live visualization previews on the main page
+- **Status Indicators**: Animated system status with real-time updates
+- **Usage Tabs**: Integrated quick start guide on the home page
