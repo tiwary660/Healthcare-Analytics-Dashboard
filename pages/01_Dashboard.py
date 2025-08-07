@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 from utils.data_processor import DataProcessor
 from utils.visualizations import HealthcareVisualizations
+from utils.advanced_visualizations import AdvancedHealthcareVisualizations
 
 st.set_page_config(
     page_title="Healthcare Dashboard",
@@ -15,6 +16,8 @@ if 'data_processor' not in st.session_state:
     st.session_state.data_processor = DataProcessor()
 if 'visualizer' not in st.session_state:
     st.session_state.visualizer = HealthcareVisualizations()
+if 'advanced_visualizer' not in st.session_state:
+    st.session_state.advanced_visualizer = AdvancedHealthcareVisualizations()
 
 st.title("📊 Healthcare Analytics Dashboard")
 st.markdown("---")
@@ -81,11 +84,40 @@ with col2:
     else:
         st.warning("Unable to create conditions chart. Missing condition data.")
 
-# Hospital efficiency dashboard
-st.subheader("Hospital Efficiency Metrics")
-efficiency_dashboard = st.session_state.visualizer.create_hospital_efficiency_dashboard(metrics)
-if efficiency_dashboard:
-    st.plotly_chart(efficiency_dashboard, use_container_width=True)
+# Advanced Dashboard Options
+dashboard_view = st.selectbox(
+    "Select Dashboard View:",
+    ["Standard View", "Advanced Gauges", "Correlation Analysis", "Flow Diagram"]
+)
+
+if dashboard_view == "Standard View":
+    # Hospital efficiency dashboard
+    st.subheader("Hospital Efficiency Metrics")
+    efficiency_dashboard = st.session_state.visualizer.create_hospital_efficiency_dashboard(metrics)
+    if efficiency_dashboard:
+        st.plotly_chart(efficiency_dashboard, use_container_width=True)
+
+elif dashboard_view == "Advanced Gauges":
+    st.subheader("Performance Gauge Dashboard")
+    gauge_dashboard = st.session_state.advanced_visualizer.create_gauge_dashboard(metrics)
+    if gauge_dashboard:
+        st.plotly_chart(gauge_dashboard, use_container_width=True)
+
+elif dashboard_view == "Correlation Analysis":
+    st.subheader("Healthcare Metrics Correlation Matrix")
+    correlation_heatmap = st.session_state.advanced_visualizer.create_heatmap_correlation(df)
+    if correlation_heatmap:
+        st.plotly_chart(correlation_heatmap, use_container_width=True)
+    else:
+        st.warning("Correlation analysis requires more numeric data columns.")
+
+elif dashboard_view == "Flow Diagram":
+    st.subheader("Patient Flow Analysis")
+    flow_diagram = st.session_state.advanced_visualizer.create_advanced_patient_flow_diagram(df)
+    if flow_diagram:
+        st.plotly_chart(flow_diagram, use_container_width=True)
+    else:
+        st.warning("Flow diagram requires condition and length of stay data.")
 
 # Length of stay analysis
 col1, col2 = st.columns(2)

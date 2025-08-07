@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a Streamlit-based healthcare analytics dashboard that provides comprehensive patient data analysis, risk assessment, and hospital efficiency monitoring. The application offers multi-page navigation with dedicated sections for dashboard analytics, machine learning-powered risk assessment, data upload capabilities, and automated report generation. It serves healthcare administrators and clinical staff by providing insights into patient outcomes, hospital performance metrics, and predictive analytics for readmission risks.
+This is an advanced Streamlit-based healthcare analytics dashboard that provides comprehensive patient data analysis, risk assessment, and hospital efficiency monitoring with enhanced interactive visualizations. The application features multi-page navigation with dedicated sections for dashboard analytics, machine learning-powered risk assessment, data upload capabilities, automated report generation, and a new advanced analytics section with interactive presentation slides. It serves healthcare administrators and clinical staff by providing insights into patient outcomes, hospital performance metrics, predictive analytics for readmission risks, and immersive 3D visualizations for complex data analysis.
 
 ## User Preferences
 
@@ -11,11 +11,13 @@ Preferred communication style: Simple, everyday language.
 ## System Architecture
 
 ### Frontend Architecture
-- **Framework**: Streamlit web application with multi-page structure
-- **Layout Strategy**: Wide layout configuration with expandable sidebar navigation
-- **Page Organization**: Modular page structure with four main sections (Dashboard, Risk Assessment, Data Upload, Reports)
+- **Framework**: Streamlit web application with multi-page structure and enhanced CSS styling
+- **Layout Strategy**: Wide layout configuration with expandable sidebar navigation and custom gradient themes
+- **Page Organization**: Modular page structure with five main sections (Dashboard, Risk Assessment, Data Upload, Reports, Advanced Analytics)
 - **State Management**: Streamlit session state for persistent data and model storage across pages
-- **UI Components**: Column-based layouts, tabs, metrics displays, and interactive file uploaders
+- **UI Components**: Column-based layouts, tabs, metrics displays, interactive file uploaders, and animated status indicators
+- **Presentation Mode**: Interactive slide-based presentation system with navigation controls and auto-advance functionality
+- **Enhanced Styling**: Custom CSS with gradient backgrounds, animated elements, and responsive design patterns
 
 ### Backend Architecture
 - **Data Processing**: Centralized DataProcessor class handling sample data generation, file uploads, and metrics calculation
@@ -50,6 +52,9 @@ Preferred communication style: Simple, everyday language.
 ### Visualization
 - **Plotly Express**: High-level plotting interface for interactive visualizations
 - **Plotly Graph Objects**: Low-level plotting for custom chart configurations
+- **Advanced Visualizations**: 3D scatter plots, Sankey diagrams, animated timelines, gauge dashboards
+- **Interactive Elements**: Correlation matrices, treemaps, violin plots, waterfall charts, and radar charts
+- **Presentation Components**: Slide-based navigation system with CSS animations and transitions
 
 ### Data Processing
 - **IO Module**: File handling for uploads and data processing

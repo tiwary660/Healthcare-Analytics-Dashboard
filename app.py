@@ -4,6 +4,7 @@ import numpy as np
 from utils.data_processor import DataProcessor
 from utils.ml_models import RiskAssessmentModel
 from utils.visualizations import HealthcareVisualizations
+from utils.advanced_visualizations import AdvancedHealthcareVisualizations
 
 # Configure page
 st.set_page_config(
@@ -13,6 +14,73 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+# Custom CSS for enhanced styling
+st.markdown("""
+<style>
+    .main-header {
+        background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        padding: 2rem;
+        border-radius: 10px;
+        color: white;
+        text-align: center;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .feature-card {
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        padding: 1.5rem;
+        border-radius: 10px;
+        margin: 1rem 0;
+        border-left: 4px solid #667eea;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .metric-container {
+        background: white;
+        padding: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-left: 3px solid #4CAF50;
+    }
+    
+    .status-indicator {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin-right: 8px;
+    }
+    
+    .status-active {
+        background-color: #4CAF50;
+        animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+        0% { opacity: 1; }
+        50% { opacity: 0.5; }
+        100% { opacity: 1; }
+    }
+    
+    .action-button {
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 0.75rem 1.5rem;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .action-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    }
+</style>
+""", unsafe_allow_html=True)
+
 # Initialize session state
 if 'data_processor' not in st.session_state:
     st.session_state.data_processor = DataProcessor()
@@ -20,10 +88,16 @@ if 'ml_model' not in st.session_state:
     st.session_state.ml_model = RiskAssessmentModel()
 if 'visualizer' not in st.session_state:
     st.session_state.visualizer = HealthcareVisualizations()
+if 'advanced_visualizer' not in st.session_state:
+    st.session_state.advanced_visualizer = AdvancedHealthcareVisualizations()
 
-# Main page content
-st.title("🏥 Healthcare Analytics Dashboard")
-st.markdown("---")
+# Main page content with enhanced styling
+st.markdown("""
+<div class="main-header">
+    <h1>🏥 Healthcare Analytics Dashboard</h1>
+    <p>Advanced predictive modeling and interactive visualizations for patient risk assessment</p>
+</div>
+""", unsafe_allow_html=True)
 
 # Overview metrics
 col1, col2, col3, col4 = st.columns(4)
@@ -82,7 +156,7 @@ st.markdown("---")
 # Quick Actions
 st.header("Quick Actions")
 
-col1, col2, col3 = st.columns(3)
+col1, col2, col3, col4 = st.columns(4)
 
 with col1:
     if st.button("📈 View Dashboard", use_container_width=True):
@@ -96,27 +170,105 @@ with col3:
     if st.button("📤 Upload Data", use_container_width=True):
         st.switch_page("pages/03_Data_Upload.py")
 
-# System Status
+with col4:
+    if st.button("🔬 Advanced Analytics", use_container_width=True):
+        st.switch_page("pages/05_Advanced_Analytics.py")
+
+# System Status with enhanced indicators
 st.markdown("---")
 st.header("System Status")
 
 status_col1, status_col2, status_col3 = st.columns(3)
 
 with status_col1:
-    st.success("✅ Data Pipeline: Active")
+    st.markdown("""
+    <div style="display: flex; align-items: center; padding: 1rem; background: #e8f5e8; border-radius: 8px; margin: 0.5rem 0;">
+        <span class="status-indicator status-active"></span>
+        <strong>Data Pipeline: Active</strong>
+    </div>
+    """, unsafe_allow_html=True)
 
 with status_col2:
-    st.success("✅ ML Models: Online")
+    st.markdown("""
+    <div style="display: flex; align-items: center; padding: 1rem; background: #e8f5e8; border-radius: 8px; margin: 0.5rem 0;">
+        <span class="status-indicator status-active"></span>
+        <strong>ML Models: Online</strong>
+    </div>
+    """, unsafe_allow_html=True)
 
 with status_col3:
-    st.success("✅ Real-time Monitoring: Active")
+    st.markdown("""
+    <div style="display: flex; align-items: center; padding: 1rem; background: #e8f5e8; border-radius: 8px; margin: 0.5rem 0;">
+        <span class="status-indicator status-active"></span>
+        <strong>Real-time Monitoring: Active</strong>
+    </div>
+    """, unsafe_allow_html=True)
+
+# Quick Preview Section
+st.markdown("---")
+st.header("Quick Preview")
+
+preview_option = st.selectbox(
+    "Select a visualization to preview:",
+    ["Performance Gauges", "3D Risk Analysis", "Correlation Matrix", "Patient Flow Diagram"]
+)
+
+if preview_option == "Performance Gauges":
+    # Generate sample data if not available
+    if 'healthcare_data' not in st.session_state:
+        st.session_state.healthcare_data = st.session_state.data_processor.generate_sample_patient_data(500)
+    
+    sample_metrics = st.session_state.data_processor.calculate_hospital_efficiency_metrics(
+        st.session_state.healthcare_data
+    )
+    gauge_preview = st.session_state.advanced_visualizer.create_gauge_dashboard(sample_metrics)
+    if gauge_preview:
+        st.plotly_chart(gauge_preview, use_container_width=True)
+
+elif preview_option == "3D Risk Analysis":
+    if 'healthcare_data' not in st.session_state:
+        st.session_state.healthcare_data = st.session_state.data_processor.generate_sample_patient_data(300)
+    
+    # Train model if needed for preview
+    if not st.session_state.ml_model.is_trained:
+        with st.spinner("Training model for preview..."):
+            st.session_state.ml_model.train_models(st.session_state.healthcare_data)
+    
+    risk_predictions, _ = st.session_state.ml_model.predict_patient_risk(st.session_state.healthcare_data)
+    scatter_3d_preview = st.session_state.advanced_visualizer.create_3d_risk_scatter(
+        st.session_state.healthcare_data, risk_predictions
+    )
+    if scatter_3d_preview:
+        st.plotly_chart(scatter_3d_preview, use_container_width=True)
+
+elif preview_option == "Correlation Matrix":
+    if 'healthcare_data' not in st.session_state:
+        st.session_state.healthcare_data = st.session_state.data_processor.generate_sample_patient_data(500)
+    
+    correlation_preview = st.session_state.advanced_visualizer.create_heatmap_correlation(
+        st.session_state.healthcare_data
+    )
+    if correlation_preview:
+        st.plotly_chart(correlation_preview, use_container_width=True)
+
+elif preview_option == "Patient Flow Diagram":
+    if 'healthcare_data' not in st.session_state:
+        st.session_state.healthcare_data = st.session_state.data_processor.generate_sample_patient_data(500)
+    
+    flow_preview = st.session_state.advanced_visualizer.create_advanced_patient_flow_diagram(
+        st.session_state.healthcare_data
+    )
+    if flow_preview:
+        st.plotly_chart(flow_preview, use_container_width=True)
 
 # Footer
 st.markdown("---")
 st.markdown(
     """
-    <div style='text-align: center; color: #666;'>
-        Healthcare Analytics Dashboard v1.0 | Built with Streamlit
+    <div style='text-align: center; color: #666; padding: 2rem;'>
+        <h3>Healthcare Analytics Dashboard v2.0</h3>
+        <p>Advanced ML-powered analytics with interactive visualizations</p>
+        <p>Built with Streamlit | Enhanced with 3D visualizations, animated charts, and predictive modeling</p>
     </div>
     """,
     unsafe_allow_html=True

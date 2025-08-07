@@ -160,7 +160,7 @@ class HealthcareVisualizations:
         )
         
         # Generate sample time series data for efficiency
-        dates = pd.date_range(start='2024-01-01', end='2024-12-31', freq='M')
+        dates = pd.date_range(start='2024-01-01', end='2024-12-31', freq='ME')
         efficiency_scores = np.random.normal(metrics.get('efficiency_score', 85), 5, len(dates))
         efficiency_scores = np.clip(efficiency_scores, 70, 95)
         
