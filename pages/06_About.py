@@ -12,42 +12,101 @@ st.set_page_config(
 st.markdown("""
 <style>
     .about-header {
-        background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
         padding: 2rem;
         border-radius: 10px;
         color: white;
         text-align: center;
         margin-bottom: 2rem;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
     }
     
     .feature-card {
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
         padding: 1.5rem;
         border-radius: 10px;
         margin: 1rem 0;
-        border-left: 4px solid #667eea;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-left: 4px solid #2c3e50;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        color: #2c3e50;
     }
     
     .usage-step {
-        background: white;
+        background: linear-gradient(135deg, #ffffff 0%, #ecf0f1 100%);
         padding: 1.5rem;
         border-radius: 8px;
         margin: 1rem 0;
-        border-left: 3px solid #4CAF50;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-left: 3px solid #27ae60;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        color: #2c3e50;
     }
     
     .tech-badge {
         display: inline-block;
-        background: #667eea;
+        background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
         color: white;
-        padding: 0.3rem 0.8rem;
-        border-radius: 20px;
-        margin: 0.2rem;
-        font-size: 0.8rem;
+        padding: 0.4rem 1rem;
+        border-radius: 25px;
+        margin: 0.3rem;
+        font-size: 0.85rem;
         font-weight: bold;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .feature-card h3, .feature-card h4 {
+        color: #2c3e50;
+        margin-top: 0;
+    }
+    
+    .usage-step h4 {
+        color: #27ae60;
+        margin-top: 0;
+    }
+    
+    .feature-card ul, .feature-card li {
+        color: #34495e;
+    }
+    
+    .usage-step p {
+        color: #2c3e50;
+    }
+    
+    /* Additional styling for better readability */
+    .stTabs [data-baseweb="tab-list"] {
+        gap: 8px;
+    }
+    
+    .stTabs [data-baseweb="tab"] {
+        background-color: #ecf0f1;
+        color: #2c3e50;
+        border-radius: 8px 8px 0 0;
+        padding: 0.5rem 1rem;
+        font-weight: bold;
+    }
+    
+    .stTabs [data-baseweb="tab"]:hover {
+        background-color: #d5dbdb;
+    }
+    
+    .stTabs [aria-selected="true"] {
+        background-color: #2c3e50 !important;
+        color: white !important;
+    }
+    
+    /* Enhanced readability for main content */
+    .main .block-container {
+        padding-top: 1rem;
+        max-width: 1200px;
+    }
+    
+    h1, h2, h3, h4 {
+        color: #2c3e50;
+    }
+    
+    p, li {
+        line-height: 1.6;
+        color: #34495e;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -249,7 +308,7 @@ with col1:
     st.markdown("""
     <div class="feature-card">
     <h4>🛠️ Technology Stack</h4>
-    <div>
+    <div style="margin-top: 1rem;">
     <span class="tech-badge">Python 3.11</span>
     <span class="tech-badge">Streamlit</span>
     <span class="tech-badge">Pandas</span>
@@ -281,33 +340,41 @@ st.markdown("""
 <div class="feature-card">
 <h4>Required Data Fields for Optimal Performance:</h4>
 
-<strong>Patient Demographics:</strong>
-<ul>
+<div style="margin: 1rem 0;">
+<strong style="color: #27ae60; font-size: 1.1rem;">Patient Demographics:</strong>
+<ul style="margin: 0.5rem 0; color: #2c3e50;">
 <li>Age, Gender, Insurance Type</li>
 <li>Admission Source and Type</li>
 <li>Patient ID (anonymized)</li>
 </ul>
+</div>
 
-<strong>Clinical Information:</strong>
-<ul>
+<div style="margin: 1rem 0;">
+<strong style="color: #27ae60; font-size: 1.1rem;">Clinical Information:</strong>
+<ul style="margin: 0.5rem 0; color: #2c3e50;">
 <li>Primary Diagnosis, Medical Conditions</li>
 <li>Length of Stay, Readmission Status</li>
 <li>Severity Score, Risk Factors</li>
 </ul>
+</div>
 
-<strong>Operational Data:</strong>
-<ul>
+<div style="margin: 1rem 0;">
+<strong style="color: #27ae60; font-size: 1.1rem;">Operational Data:</strong>
+<ul style="margin: 0.5rem 0; color: #2c3e50;">
 <li>Admission and Discharge Dates</li>
 <li>Department/Unit Information</li>
 <li>Cost and Billing Data (optional)</li>
 </ul>
+</div>
 
-<strong>Outcome Metrics:</strong>
-<ul>
+<div style="margin: 1rem 0;">
+<strong style="color: #27ae60; font-size: 1.1rem;">Outcome Metrics:</strong>
+<ul style="margin: 0.5rem 0; color: #2c3e50;">
 <li>Patient Satisfaction Scores</li>
 <li>Readmission within 30 days</li>
 <li>Complications or Adverse Events</li>
 </ul>
+</div>
 </div>
 """, unsafe_allow_html=True)
 
