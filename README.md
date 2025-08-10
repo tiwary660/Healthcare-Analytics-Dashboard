@@ -1,3 +1,4 @@
+HEAD
 # Healthcare Analytics Dashboard
 
 A comprehensive, ML-powered healthcare analytics platform built with Streamlit for real-time patient data analysis, risk assessment, and operational insights.
@@ -207,3 +208,7 @@ For technical support or questions about healthcare analytics implementation:
 ---
 
 **Healthcare Analytics Dashboard v2.0** | Built with ❤️ using Streamlit & Python | Enhanced with Advanced ML Analytics and Interactive Visualizations
+
+# Healthcare-Analytics-Dashboard
+Healthcare Analytics Dashboard for professionals, administrators, and data scientists. Uses machine learning, interactive visualizations, and predictive analytics to aid informed decisions in patient care, resource allocation, and operational efficiency.
+eb46f35f38fc9b7d75d3235a946d97af1aade357
