@@ -1,4 +1,7 @@
 [server]
-headless = true
-address = "0.0.0.0"
+headless = false
 port = 5000
+
+[browser]
+serverAddress = "localhost"
+serverPort = 5000
